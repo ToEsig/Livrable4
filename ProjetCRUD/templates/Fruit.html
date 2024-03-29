@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits</title>
+</head>
+<body>
+    <h1>Fruits</h1>
+
+    <!-- Barre de recherche -->
+    <form method="get" action="{% url 'search' %}">
+        {{ form.as_p }}
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <!-- Affichage des résultats de recherche s'ils existent -->
+    {% if results %}
+    <h2>Résultats de la recherche</h2>
+    <ul>
+        {% for result in results %}
+            <li>
+                <strong>Name:</strong> {{ result.name }}<br>
+                <strong>Type:</strong> {{ result.type }}<br>
+                <strong>Description:</strong> {{ result.description }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- Affichage des données des fruits -->
+<h2>Données des fruits</h2>
+<ul>
+    {% for api_object in api_objects %}
+    <li>
+        <strong>Name:</strong> {{ api_object.name }}<br>
+        <strong>Type:</strong> {{ api_object.type }}<br>
+        <strong>Description:</strong> {{ api_object.description }}<br>
+    </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
